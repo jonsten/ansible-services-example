@@ -1,0 +1,23 @@
+---
+- hosts: all
+  connection: local # You probably want to replace this line with become: true in production
+  tasks:
+    - name: "Run service roles"
+      include_role:
+        name: "{{ item }}"
+        # We must add the service tag to list of tags, otherwise tasks in role won't run:
+        apply:
+          tags:
+            - "{{ item }}"
+      # Run this task if no tag has been selected, e.g. "all", or specific service is supplied
+      # as tag by user, and the current host should have the specified service:
+      when: ("all" in ansible_run_tags or item in ansible_run_tags) and item in services_list
+      # This just makes sure that we run this generic task, regardless of what tags (services)
+      # the user has selected:
+      tags: always
+      # Do this for all possible services:
+      with_items: "{{ all_services }}"
+  # Possible to include generic handlers. Could for example be used for reverse proxies that front
+  # other services that add their own configurations:
+  handlers:
+    - import_tasks: handlers/main.yml

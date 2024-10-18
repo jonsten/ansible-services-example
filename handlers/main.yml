@@ -1,0 +1,4 @@
+---
+- name: Reload nginx config
+  debug:
+    msg: Reloading nginx config, well not really...

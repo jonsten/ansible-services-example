@@ -1,0 +1,4 @@
+# First example host, "host1", and the services it should have:
+host1 services="nginx,grafana-agent,grafana"
+# Second example host, "host2", and the services it should have:
+host2 services="nginx,grafana-agent,home-assistant"

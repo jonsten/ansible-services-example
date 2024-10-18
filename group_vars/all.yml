@@ -1,0 +1,10 @@
+---
+# Enumerate all your services/roles here. Each host can then select among
+# these. The list also specifies the order of which the roles are deployed.
+all_services:
+  - nginx
+  - grafana-agent
+  - grafana
+  - home-assistant
+
+services_list: "{{ services.split(',') }}"

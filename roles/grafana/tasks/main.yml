@@ -1,0 +1,7 @@
+---
+- name: Replace with real tasks...
+  debug:
+    msg: Tasks for setting up grafana here
+  changed_when: true # Just to force task changed...
+  notify:
+    - Reload nginx config

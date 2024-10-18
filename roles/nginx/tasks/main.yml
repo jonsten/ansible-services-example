@@ -1,0 +1,4 @@
+---
+- name: Replace with real tasks...
+  debug:
+    msg: Tasks for setting up nginx here
